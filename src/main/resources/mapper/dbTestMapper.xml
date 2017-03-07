@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hello.db.mapper.DbTestMapper">
+    <resultMap id="resultMap" type="com.hello.db.domain.DbTest">
+        <id column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="gmt_modified" property="gmtModified"/>
+    </resultMap>
+
+    <select id="queryById" parameterType="java.lang.Long" resultMap="resultMap">
+        SELECT *
+        FROM tb1
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateById" parameterType="com.hello.db.domain.DbTest">
+        UPDATE tb1
+        SET gmt_modified = now()
+        WHERE id = #{id}
+    </update>
+</mapper>

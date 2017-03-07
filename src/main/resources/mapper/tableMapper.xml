@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hello.db.mapper.TableMapper">
+    <resultMap id="resultMap" type="com.hello.db.domain.TableDO">
+        <id column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="val" property="val"/>
+    </resultMap>
+
+    <select id="queryById" parameterType="java.lang.Long" resultMap="resultMap">
+        SELECT *
+        FROM tb2
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateById" parameterType="com.hello.db.domain.TableDO">
+        UPDATE tb2
+        SET val = #{val}
+        WHERE id = #{id}
+    </update>
+</mapper>
